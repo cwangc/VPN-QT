@@ -3,11 +3,14 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
+TARGET = ../build-vpn-Desktop_Qt_5_8_0_GCC_64bit-Debug/vpn
 DEPENDPATH += . libs/tinyxml
 INCLUDEPATH += . libs/tinyxml
 LIBS += -lcurl
 RESOURCES     = vpn.qrc
+QT += widgets
+
+QT += core
 
 # Input
 HEADERS += about.h \
