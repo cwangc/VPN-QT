@@ -1,4 +1,6 @@
-#include <QtGui>
+#include <QtWidgets>
+#include <QPushButton>
+#include <QComboBox>
 #include "location.h"
 
 Location::Location()
