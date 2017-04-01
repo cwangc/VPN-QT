@@ -1,4 +1,4 @@
-#include <QtGui>
+#include <QtWidgets>
 #include "about.h"
 
 void Label::mouseReleaseEvent(QMouseEvent *e)
@@ -20,10 +20,12 @@ About::About()
     label2 = new Label(this);
     label3 = new Label(this);
     bodyLabel = new Label(this);
-    closeButton = new QPushButton(this);
+    //closeButton = new QPushButton(this);
+    closeButton = new QPushButton("&Close", this);
     bodyLabel->setTextFormat(Qt::PlainText);
     bodyLabel->setText("Safejumper, by proxy.sh - version 2.0\nMore infomation @ https://proxy.sh");
-    closeButton->setText(QString::fromUtf8("OK"));
+    //closeButton->setText(QString::fromUtf8("OK"));
+    closeButton->setText("OK");
 
     label1->setGeometry(QRect(20, 20, 80, 80));
     label1->setStyleSheet("border-image:url(:/images/img_safejumper.jpg)");
