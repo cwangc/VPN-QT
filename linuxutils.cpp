@@ -17,7 +17,7 @@
 
 #define MAX_INTERFACES 100
 
-int checkFile(char *cmdname)
+int checkFile(const char *cmdname)
 {
     int res = 0;
     char whichcmd[100] = {0};
@@ -271,7 +271,7 @@ int pingAddress(char * addr)
         while(fgets(result, 1024, ptr)!=NULL)   
         {
             if (strstr(result, "time=") != NULL) {
-                sscanf(result, "time=%d ms", time);
+                sscanf(result, "time=%d ms", &time);
                 break;
             }
         }
@@ -280,7 +280,7 @@ int pingAddress(char * addr)
     }
     else
     {
-        printf("popen %s error\n", digcmd);   
+        //printf("popen %s error\n", digcmd);
         return -1;
     }
     return time;
