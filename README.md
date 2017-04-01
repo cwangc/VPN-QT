@@ -1,9 +1,3 @@
-TODO list
-LINUX:
-* Verify the settings part
-* Add sudo GUI for linux version
-* Fix location map issue
+Bugs fixed, warnning cleaned.
+Code updated for Qt5.8.0.
 
-WINDOWS:
-* Verfiy and fix the issues of settings
-* Fix location map issue
