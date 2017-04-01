@@ -1,4 +1,5 @@
-#include <QtGui>
+#include <QtWidgets>
+#include <QAction>
 #include <QDesktopServices>
 #include "systray.h"
 
