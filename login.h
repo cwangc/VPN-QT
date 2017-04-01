@@ -1,14 +1,16 @@
 #ifndef LOGINDLG_H
 #define LOGINDLG_H
  
-#include <QtGui>
+#include <QtWidgets>
 #include <QDialog>
 #include <QRadioButton>
 #include <QFutureWatcher>
+#include <QIcon>
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QLabel>
  
-class QLineEdit;
-class QPushButton;
-class QLabel;
  
 class LoginDlg : public QDialog
 {
