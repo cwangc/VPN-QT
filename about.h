@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QLabel>
+#include <QPushButton>
 
 class QAction;
 class QPushButton;
