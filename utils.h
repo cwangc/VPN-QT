@@ -43,6 +43,6 @@ int getAccountInfo(char *file, char *username, char *password, int *flag);
 void saveAccountInfo(char *file, char *username, char *password, int flag);
 int getServerListFile(char *serverListFile, char *link);
 bool verifyAccount(char *xmlFile);
-int replaceStr(char *p_result,char* p_source,char* p_seach,char *p_repstr);
+int replaceStr(char *p_result,char* p_source,const char* p_seach, const char *p_repstr);
 
 #endif //end of UTILS_H
