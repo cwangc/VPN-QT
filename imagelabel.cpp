@@ -1,29 +1,54 @@
+#ifndef ABOUT_H
+#define ABOUT_H
+
+#include <QDialog>
 #include <QLabel>
-#include "imagelabel.h"
+#include <QPushButton>
 
-ImageLabel::ImageLabel(const QString &s1, const QString &s2, QWidget *parent) :QLabel(parent) 
-{
-    img1 = s1;
-    img2 = s2;
-    this->setStyleSheet("border-image: url("+img1+")");
-}
+class QAction;
+class QPushButton;
+class QIcon;
 
-void ImageLabel::enterEvent(QEvent * e)
+class Label: public QLabel
 {
-    this->setStyleSheet("border-image: url("+img2+")");
-    this->setGeometry(QRect(10, 10, 99, 80));
-    QLabel::enterEvent(e);
-}
+    Q_OBJECT
+public:
+    explicit Label(QWidget *parent=0): QLabel(parent)
+    {
+    }
 
-void ImageLabel::leaveEvent(QEvent *e)
-{
-    this->setStyleSheet("border-image: url("+img1+")");
-    this->setGeometry(QRect(19, 10, 80, 80));
-    QLabel::enterEvent(e);
-}
+protected:   
+    void mouseReleaseEvent( QMouseEvent* ); 
+    void enterEvent(QEvent *e);
 
-void ImageLabel::mouseReleaseEvent(QMouseEvent *e)
+signals:
+    void clicked();
+};
+
+class About: public QDialog
 {
-    emit clicked();
-    QLabel::mouseReleaseEvent(e);
-}
+    Q_OBJECT
+public:
+    About();
+
+public slots:
+    void showAboutDialog();
+    void openProxyLink();
+    void openQTLink();
+    void openOpenvpnLink();
+
+protected:
+    void closeEvent(QCloseEvent *event);
+
+private slots:
+
+private:
+    Label *label1;
+    Label *label2;
+    Label *label3;
+    Label *bodyLabel;
+    QPushButton *closeButton;
+    QIcon *icon; 
+};
+
+#endif
