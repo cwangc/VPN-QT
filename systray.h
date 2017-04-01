@@ -3,6 +3,18 @@
 
 #include <QSystemTrayIcon>
 #include <QDialog>
+
+#include <QAction>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QGroupBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMenu>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QTextEdit>
+
 #include "statuswindow.h"
 #include "settings.h"
 #include "login.h"
@@ -10,16 +22,16 @@
 #include "location.h"
 #include "logdialog.h"
 
-class QAction;
-class QCheckBox;
-class QComboBox;
-class QGroupBox;
-class QLabel;
-class QLineEdit;
-class QMenu;
-class QPushButton;
-class QSpinBox;
-class QTextEdit;
+//class QAction;
+//class QCheckBox;
+//class QComboBox;
+//class QGroupBox;
+//class QLabel;
+//class QLineEdit;
+//class QMenu;
+//class QPushButton;
+//class QSpinBox;
+//class QTextEdit;
 
 class Systray : public QObject
 {
