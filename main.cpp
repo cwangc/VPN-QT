@@ -1,4 +1,5 @@
-#include <QtGui>
+#include <QtWidgets>
+#include <QApplication>
 #include "systray.h"
 #include "statuswindow.h"
 #include "settings.h"
