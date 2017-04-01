@@ -1,4 +1,9 @@
 #include <QtGui>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QPushButton>
+#include <QMessageBox>
+#include<QtConcurrent/QtConcurrent>
 #include "login.h"
 #include "utils.h"
 
