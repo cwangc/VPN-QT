@@ -1,10 +1,14 @@
 #include <QMainWindow>
 #include <QDebug>
-#include <QtGui>
+#include <QtWidgets>
+#include <QtWidgets/QPushButton>
+#include <QtConcurrent/QtConcurrent>
+
 #include <QtCore/QSharedMemory>
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 #if defined(Q_OS_WIN)
 #include <windows.h>
 #include <winsock2.h>
