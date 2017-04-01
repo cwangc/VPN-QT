@@ -1,70 +1,59 @@
-#include <QtGui>
-#include "logdialog.h"
+#ifndef LOCATION_H
+#define LOCATION_H 
+
+#include <QDialog>
+#include "imagelabel.h"
 #include "utils.h"
 
-LogDialog::LogDialog()
+class QLabel;
+class QPushButton;
+class QIcon;
+class QComboBox;
+
+class Location: public QDialog
 {
-    mainImg = new ImageLabel(":/images/main1.png", ":/images/main2.png", this);
-    connect(mainImg, SIGNAL(clicked()), this, SLOT(returnMainWindow()));
-    copyButton = new QPushButton(this);
-    contactButton= new QPushButton(this);
-    logArea = new QTextEdit(this);
+    Q_OBJECT
+public:
+    Location();
+    virtual ~Location();
 
-    // set UI
-    mainImg->setGeometry(QRect(19, 10, 80, 80));
-    copyButton->setGeometry(QRect(201, 50, 189, 30));
-    copyButton->setStyleSheet("border-image: url(:/images/log-copybutton.jpg)");
-    logArea->setGeometry(QRect(10, 105, 380, 160));
-    logArea->setReadOnly(true);
-    contactButton->setGeometry(QRect(78, 290, 245, 45));
-    contactButton->setStyleSheet("border-image: url(:/images/log-contactbutton.jpg)");
-    this->setStyleSheet("QDialog{border-image: url(:/images/log-bg.png)}");
+public slots:
+    void showLocationAfterLogin();
 
-    connect(copyButton, SIGNAL(clicked()), this, SLOT(copyButtonAction()));
-    connect(contactButton, SIGNAL(clicked()), this, SLOT(contactButtonAction()));
+signals:
+    void returnMain();
+    void settingsDialgShow();
+    void returnMainWithLocation(QString &protocol, QString &port, QString &country);
+    void addLog(const QString &l);
+    void showBalloon(const int &type, const QString &t, const QString &m);
 
-    icon = new QIcon(":/images/vc.ico");
-    setWindowIcon(*icon);
-    resize(400, 350);
-    setMinimumSize(QSize(400, 350));
-    setMaximumSize(QSize(400, 350));
-    setWindowTitle(tr("Safejumper"));
-}
+protected:
 
-LogDialog::~LogDialog()
-{
-    delete label1;
-    delete copyButton;
-    delete contactButton;
-    delete logArea;
-    delete mainImg;
-    delete icon;
-}
+private slots:
+    void protocolChanged(const QString &text);
+    void countryChanged(const QString &text);
+    void returnMainWindow();
+    void connectClickAction();
+    void settingClickAction();
 
-void LogDialog::showLogDialog()
-{
-    logArea->setText(log);
-    this->show();
-}
+private:
+    ImageLabel *mainImg;
+    QLabel *label1;
+    QLabel *label2;
+    QLabel *mapLabel;
+    QComboBox *protocolCom;
+    QComboBox *country;
+    QPushButton *connectButton;
+    QPushButton *settingButton;
+    QIcon *icon;
+    bool locationReady;
+    bool protocolReady;
+    QString location;
+    QString protocol;
+    QString port;
+    Server *serverList;
+    Server *countryList;
+    char serverListFile[255];
+};
 
-void LogDialog::addLogEntry(const QString &e)
-{
-    log += e;
-}
-
-void LogDialog::returnMainWindow()
-{
-    emit returnMain();
-}
-
-void LogDialog::copyButtonAction()
-{
-    QClipboard *clipboard = QApplication::clipboard();
-    clipboard->setText(logArea->toPlainText());
-}
-
-void LogDialog::contactButtonAction()
-{
-    QDesktopServices::openUrl(QUrl(QLatin1String("http://blog.const.net.cn")));
-}
-
+#endif
