@@ -121,7 +121,8 @@ void encrypt(const char *in, char *result)
     int i,j, k=0;
     int key = C3;
 
-    (void) memset(result, '\0', sizeof (result));
+    size_t len = sizeof (result);
+    (void) memset(result, '\0', len);
     strcpy(result, in);
     strcpy(input, in);
     printf("the input string length is %d\n", size);
@@ -131,7 +132,8 @@ void encrypt(const char *in, char *result)
        key = ((unsigned char)result[i]+key)*C1+C2;
     }
     strcpy(input, result);
-    (void) memset(result, '\0', sizeof (result));
+    len = sizeof (result);
+    (void) memset(result, '\0', len);
 
     for(i=0; i< (int)strlen(input); i++)
     {
@@ -152,8 +154,9 @@ void decrypt(const char *in, char *result)
     char str[1] = {'1'};
     int i,j, k = 0;
     int key = C3;
+    int len =sizeof (result);
+    (void) memset(result, '\0', len);
 
-    (void) memset(result, '\0', sizeof (result));
     strcpy(input, in);
     for (i=0; i < size/2; i++)
     {
@@ -444,7 +447,7 @@ bool verifyAccount(char *xmlFile)
     }
 }
 
-int replaceStr(char *p_result,char* p_source,char* p_seach,char *p_repstr)
+int replaceStr(char *p_result,char* p_source, const char* p_seach, const char *p_repstr)
 {  
     int c = 0;
     int repstr_leng = 0;
@@ -453,8 +456,8 @@ int replaceStr(char *p_result,char* p_source,char* p_seach,char *p_repstr)
     char *p1;
     char *presult = p_result;
     char *psource = p_source;
-    char *prep = p_repstr;
-    char *pseach = p_seach;
+    const char *prep = p_repstr;
+    const char *pseach = p_seach;
     int nLen = 0;
 
     repstr_leng = strlen(prep);
